@@ -1,13 +1,17 @@
 import { useId } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import {object, string, number, mixed} from "yup";
+import {object, string,  mixed} from "yup";
 import css from "./ContactForm.module.css"
-const ContactForm = ({ onAdd }) => {
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/contactsSlice";
 
+const ContactForm = () => {
+
+    const dispatch = useDispatch();
     const nameFieldId = useId();
     const numberFieldId = useId();
 
-const initialValues = {
+    const initialValues = {
                 name: '',
                 number: '',
     }
@@ -32,15 +36,11 @@ const initialValues = {
             )
     })
 
-
-
     const handleSubmit = (values, action) => {
-
-        onAdd({
+        dispatch(addContact({
             name: values.name,
             number: values.number,
-            id: Date.now()
-        })
+        }))
         action.resetForm();
     }
 
@@ -64,7 +64,11 @@ const initialValues = {
                 <button type="submit">Add contact</button>
                 </Form>
             </Formik>
+
         </>
+
+
+
     )
 
 
