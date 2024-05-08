@@ -35,9 +35,6 @@ const store = configureStore({
 
 
 
-export const getContacts = () => store.getState().contacts.item;
-export const selectNameFilter = () => store.getState().filters;
-
 export const persistor = persistStore(store);
 
 
