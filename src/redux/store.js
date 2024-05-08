@@ -35,9 +35,6 @@ const store = configureStore({
 
 
 
-// export const getContacts = () => useSelector(state => state.contacts);
-// export const selectNameFilter = () => useSelector(state => state.filters);
-
 export const getContacts = () => store.getState().contacts.item;
 export const selectNameFilter = () => store.getState().filters;
 
